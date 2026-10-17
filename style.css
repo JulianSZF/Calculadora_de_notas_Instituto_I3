@@ -1,0 +1,115 @@
+/* Estilos de la Calculadora de Notas Instituto i3 */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e8efff, #d8e6f5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 450px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    text-align: center;
+    color: #244b83;
+    margin-bottom: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-top: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc9d8;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 2px solid #5687d8;
+    border-color: #5687d8;
+}
+
+button {
+    margin-top: 18px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2859a5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #193e79;
+}
+
+.resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f4fa;
+    border-radius: 8px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.resultado p {
+    margin: 5px 0;
+}
+
+.aprobado {
+    color: #167442;
+    font-weight: bold;
+}
+
+.reprobado {
+    color: #b42318;
+    font-weight: bold;
+}
+
+.error {
+    color: #b42318;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .contenedor {
+        padding: 22px;
+    }
+}

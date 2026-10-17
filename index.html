@@ -63,7 +63,65 @@
     </main>
 
     <script>
-        // La lógica del cálculo se conectará aquí.
+
+    const formulario = document.getElementById("formularioNotas");
+    const resultado = document.getElementById("resultado");
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const nombre = document.getElementById("nombre").value.trim();
+
+        const nota1 = Number(document.getElementById("nota1").value);
+        const nota2 = Number(document.getElementById("nota2").value);
+        const nota3 = Number(document.getElementById("nota3").value);
+
+        if (!nombre) {
+            mostrarError("Debes ingresar el nombre del estudiante.");
+            return;
+        }
+
+        const campos = [
+            document.getElementById("nota1"),
+            document.getElementById("nota2"),
+            document.getElementById("nota3")
+        ];
+
+        for (const campo of campos) {
+            if (campo.value.trim() === "") {
+                mostrarError("Debes ingresar las tres notas.");
+                return;
+            }
+
+            const nota = Number(campo.value);
+
+            if (!Number.isFinite(nota) || nota < 0 || nota > 5) {
+                mostrarError("Todas las notas deben estar entre 0 y 5.");
+                return;
+            }
+        }
+
+        const promedio = (nota1 + nota2 + nota3) / 3;
+        const aprobado = promedio >= 3.0;
+
+        resultado.innerHTML = `
+            <p><strong>Estudiante:</strong> ${escaparHTML(nombre)}</p>
+            <p><strong>Promedio:</strong> ${promedio.toFixed(2)}</p>
+            <p class="${aprobado ? "aprobado" : "reprobado"}">
+                ${aprobado ? "¡APROBÓ!" : "REPROBÓ"}
+            </p>
+        `;
+    });
+
+    function mostrarError(mensaje) {
+        resultado.innerHTML = `<p class="error">${mensaje}</p>`;
+    }
+
+    function escaparHTML(texto) {
+        const elemento = document.createElement("span");
+        elemento.textContent = texto;
+        return elemento.innerHTML;
+    }
     </script>
 
 </body>

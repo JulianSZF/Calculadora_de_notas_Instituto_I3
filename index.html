@@ -1,70 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Notas - Instituto i3</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050907">
+  <meta name="description" content="Calculadora de notas del Instituto i3 con interfaz de terminal.">
+  <title>Calculadora de Notas | Instituto i3</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <main class="terminal" aria-labelledby="terminal-title">
+    <div class="terminal-bar" aria-hidden="true">
+      <span class="terminal-lights"><i></i><i></i><i></i></span>
+      <span class="terminal-caption">i3_grade_calculator.exe</span>
+      <span class="terminal-version">v1.0</span>
+    </div>
 
-    <main class="contenedor">
-        <h1>Instituto i3</h1>
-        <h2>Calculadora de Notas</h2>
+    <div class="terminal-content">
+      <header class="terminal-header">
+        <p class="system-line"><span class="prompt-mark">&gt;</span> SISTEMA ACADÉMICO / INSTITUTO I3</p>
+        <h1 id="terminal-title">CALCULADORA<span class="title-break">DE NOTAS</span></h1>
+        <p class="subtitle">Cálculo de promedio estudiantil<span class="cursor" aria-hidden="true">_</span></p>
+      </header>
 
-        <form id="formularioNotas">
-            <label for="nombre">Nombre del estudiante:</label>
-            <input
-                type="text"
-                id="nombre"
-                placeholder="Ingresa tu nombre"
-                required
-            >
+      <div class="divider" aria-hidden="true"><span>INGRESO DE DATOS</span></div>
 
-            <label for="nota1">Primera nota:</label>
-            <input
-                type="number"
-                id="nota1"
-                min="0"
-                max="5"
-                step="0.1"
-                placeholder="0.0 - 5.0"
-                required
-            >
+      <form id="grade-form" novalidate>
+        <div class="field field-name">
+          <label for="student-name"><span class="field-index">01</span> NOMBRE DEL ESTUDIANTE</label>
+          <div class="input-frame">
+            <span class="input-prefix" aria-hidden="true">&gt;_</span>
+            <input id="student-name" name="studentName" type="text" autocomplete="name" placeholder="Escribe el nombre..." required aria-describedby="name-error">
+          </div>
+          <small class="field-error" id="name-error"></small>
+        </div>
 
-            <label for="nota2">Segunda nota:</label>
-            <input
-                type="number"
-                id="nota2"
-                min="0"
-                max="5"
-                step="0.1"
-                placeholder="0.0 - 5.0"
-                required
-            >
+        <fieldset class="grades-fieldset">
+          <legend><span class="field-index">02</span> NOTAS <span class="legend-hint">[ RANGO VÁLIDO: 0.0 — 5.0 ]</span></legend>
+          <div class="grade-fields">
+            <div class="field">
+              <label for="grade-1">NOTA_01</label>
+              <div class="input-frame">
+                <span class="input-prefix" aria-hidden="true">&gt;</span>
+                <input id="grade-1" name="grade1" type="number" min="0" max="5" step="any" inputmode="decimal" placeholder="0.0" required aria-describedby="grade-1-error">
+              </div>
+              <small class="field-error" id="grade-1-error"></small>
+            </div>
+            <div class="field">
+              <label for="grade-2">NOTA_02</label>
+              <div class="input-frame">
+                <span class="input-prefix" aria-hidden="true">&gt;</span>
+                <input id="grade-2" name="grade2" type="number" min="0" max="5" step="any" inputmode="decimal" placeholder="0.0" required aria-describedby="grade-2-error">
+              </div>
+              <small class="field-error" id="grade-2-error"></small>
+            </div>
+            <div class="field">
+              <label for="grade-3">NOTA_03</label>
+              <div class="input-frame">
+                <span class="input-prefix" aria-hidden="true">&gt;</span>
+                <input id="grade-3" name="grade3" type="number" min="0" max="5" step="any" inputmode="decimal" placeholder="0.0" required aria-describedby="grade-3-error">
+              </div>
+              <small class="field-error" id="grade-3-error"></small>
+            </div>
+          </div>
+        </fieldset>
 
-            <label for="nota3">Tercera nota:</label>
-            <input
-                type="number"
-                id="nota3"
-                min="0"
-                max="5"
-                step="0.1"
-                placeholder="0.0 - 5.0"
-                required
-            >
+        <button type="submit"><span class="button-prompt" aria-hidden="true">&gt;_</span> EJECUTAR CÁLCULO <span class="button-arrow" aria-hidden="true">↵</span></button>
+        <section id="result" class="result" aria-live="polite" hidden></section>
+      </form>
 
-            <button type="submit">Calcular</button>
-        </form>
-
-        <section id="resultado" class="resultado" aria-live="polite">
-            <p>Ingresa tus datos para calcular el promedio.</p>
-        </section>
-    </main>
-
-    <script>
-        // La lógica del cálculo se conectará aquí.
-    </script>
-
+      <footer class="terminal-footer">
+        <span><i class="status-light" aria-hidden="true"></i> SISTEMA LISTO</span>
+        <span>APROBACIÓN: PROMEDIO ≥ 3.0</span>
+      </footer>
+    </div>
+  </main>
+  <div class="page-note" aria-hidden="true">INSTITUTO I3 <span>•</span> SISTEMA DE EVALUACIÓN</div>
 </body>
 </html>
